@@ -39,7 +39,4 @@ def translate(to_be_translated, language):
     else:
         translation = response['d']["result"]  # Only one result
 
-    if not response['d']['isWord']:
-        translation = None
-
     return translation

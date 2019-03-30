@@ -4,7 +4,6 @@ from pprint import pprint
 
 N_RECIPES = 2
 
-
 def build_payload(ingredients):
     count = 0
     n_ingredients = len(ingredients)
@@ -46,20 +45,30 @@ def get_recipes(ingredients):
 
     response = requests.request("POST", url, data=payload, headers=headers).json()
 
-    # pprint(response)
+    #pprint(response)
 
     count = 0
     recipes = {}
     needs = {}
+    url = {}
     for r in response['results']:
-        recipes.update({count: r['title']})
-        needs.update(({count: r['needs']}))
-        # take only the first N_RECIPES recipes
-        if count == N_RECIPES:
-            break
-
-        count = count + 1
+        if r['displayurl'].find("allrecipes.com") != -1:
+            recipes.update({count: r['title']})
+            needs.update(({count: r['needs']}))
+            url.update(({count: r['hash']}))
+            # take only the first N_RECIPES recipes
+            if count == N_RECIPES:
+                break
+    
+            count = count + 1
 
     # pprint(recipes)
 
-    return recipes, needs
+    return recipes, needs, url
+
+
+def getRecipeName(ingredients):
+    ingredients.sort()
+    recipes, needs, urls = get_recipes(ingredients)
+    
+    return recipes, needs, urls

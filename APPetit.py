@@ -1,20 +1,24 @@
 import supercook as sc
-import translate as ts
-
-
-IT_TO_EN = "it-en"
-EN_TO_IT = "en-it"
+import retriveRecipes as pc  
+import food_delivery as fd
 
 
 def main():
-    ingredients = ["uova", "suefhienuwehfi"]
+    recipes, needs, urls = sc.getRecipeName(["milk", "parmesan"])
+    steps, prep_time, calories = pc.getRecipe(recipes[0])    
+    
+    print(recipes[0])
+    for s in steps:
+        print(s)
 
-    ingredients = ts.translator(ingredients, IT_TO_EN)
-    recipes, needs = sc.get_recipes(ingredients)
+    order = "pasta"
+    name, price = fd.order_food(order)
 
-    print(recipes)
-    print(needs)
-
+    if price != -1:
+        print("Best price is " + str(price) + "€ at " + "name")
+    else:
+        print("I did not find anything")
+    
     return
 
 
