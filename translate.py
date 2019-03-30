@@ -1,4 +1,5 @@
 import requests
+from pprint import pprint
 
 
 def translator(strings, language):
@@ -31,14 +32,14 @@ def translate(to_be_translated, language):
     }
 
     response = requests.request("POST", url, data=payload, headers=headers).json()
-    print(response)
+    # pprint(response)
 
     if len(response['d']["resultNoTags"]) > 0:
         translation = response['d']["resultNoTags"].split(',')[2].split(" ")[1]  # More results
     else:
         translation = response['d']["result"]  # Only one result
 
-    if translation == to_be_translated:  # No translation found
+    if not response['d']['isWord']:
         translation = None
 
     return translation

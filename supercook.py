@@ -13,9 +13,11 @@ def build_payload(ingredients):
     for i in ingredients:
         # if last item then do not add '%2C%20', ex: "egg%2C%20butter"
         if count == n_ingredients-1:
-            payload += i
+            if i is not None:
+                payload += i
         else:
-            payload += i + "%2C%20"
+            if i is not None:
+                payload += i + "%2C%20"
 
         count = count + 1
 
@@ -44,18 +46,20 @@ def get_recipes(ingredients):
 
     response = requests.request("POST", url, data=payload, headers=headers).json()
 
-    pprint(response)
+    # pprint(response)
 
     count = 0
     recipes = {}
+    needs = {}
     for r in response['results']:
-        recipes.update({r['title']: r['needs']})
+        recipes.update({count: r['title']})
+        needs.update(({count: r['needs']}))
         # take only the first N_RECIPES recipes
         if count == N_RECIPES:
             break
 
         count = count + 1
 
-    pprint(recipes)
+    # pprint(recipes)
 
-    return recipes
+    return recipes, needs
