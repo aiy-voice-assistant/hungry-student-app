@@ -32,7 +32,7 @@ def order_food(name):
         result.update(({"glovo": -1}))
 
     if name in deliveroo:
-        result.update(({"just eat": deliveroo[name]}))
+        result.update(({"just eat": justeat[name]}))
     else:
         result.update(({"just eat": -1}))
 

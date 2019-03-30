@@ -15,7 +15,7 @@ def main():
     name, price = fd.order_food(order)
 
     if price != -1:
-        print("Best price is " + str(price) + "€ at " + "name")
+        print("Best price is " + str(price) + "€ at " + name)
     else:
         print("I did not find anything")
     
