@@ -4,7 +4,7 @@ Hungry Student APP has been developed in 24h during the "Like@Home" hackathon in
 
 Thanks to this assistant we got the first place.
 
-The used kit for the hackathon has been for [AIY Voice Kit from Google](https://aiyprojects.withgoogle.com/voice/)
+The used kit for the hackathon has been for [AIY Voice Kit from Google](https://aiyprojects.withgoogle.com/voice/).
 
 # Main aspect
 
