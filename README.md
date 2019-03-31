@@ -1,10 +1,10 @@
 # hungry-student-app
 
-Hungry Student APP has been developed in 24h during the "Like@Home" hackathon in Turin the 30-31th MArch 2019. It's an home assistant that use natural language processor and it is able to connect to the Google Assistant or Cloud Speech-to-Text service.
-
-The used kit for the hackathon has been for [AIY Voice Kit from Google](https://aiyprojects.withgoogle.com/voice/)
+Hungry Student APP has been developed in 24h during the "Like@Home" hackathon in Turin the 30-31th MArch 2019. It's an home assistant that use natural language processor and it is able to connect to the Google Assistant or Cloud Speech-to-Text service. Check out our [presentation](https://prezi.com/gcdsh_eg6-uu/aiy/?utm_campaign=share&utm_medium=copy).
 
 Thanks to this assistant we got the first place.
+
+The used kit for the hackathon has been for [AIY Voice Kit from Google](https://aiyprojects.withgoogle.com/voice/)
 
 # Main aspect
 
