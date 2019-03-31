@@ -37,14 +37,30 @@ def getRecipe(name_recipe):
     r2 = requests.get(url_recipe)
 
     # PARSER FOR EXTRACT STEPS OF RECIPES
-    soup = BeautifulSoup(r2.text, "html.parser")
-    steps = soup.find_all(class_="recipe-directions__list--item")
-    calories = soup.find(itemprop="calories")
-    prep_time = soup.find(class_="prepTime")
-      
-    i = 0
-    for i in range(0,len(steps)):
-        steps[i] = steps[i].text.replace("\n","").replace("  ", "")
+    soup = BeautifulSoup(r2.text, "html.parser")    
+    box = soup.find(class_="directions--section__steps")  
+    
+    box_split = box.text.strip("\n").replace("\n"," ").split("  ")
+    steps = []
+    prep_time = "4"
+    
+    i=0
+    for b in box_split:
+        if b:
+            steps.append(b)
+            i+=1
+       
+    if steps[2]:
+        prep_time = steps[2].replace(" Ready In","").replace(" m","")
+    else:
+        prep_time = "6"
+        
+    steps = steps[3:]
+    
+    if len(prep_time) > 2:
+        prep_time = "4"
+    calories = 0
+        
     
     return steps, prep_time, calories
 
